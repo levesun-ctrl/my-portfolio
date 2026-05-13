@@ -1,116 +1,100 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>我的个人作品集 | Portfolio</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: "Segoe UI",Microsoft YaHei,sans-serif;
-      background-color: #f5f7fa;
-      color: #333;
-      line-height: 1.7;
-    }
-    .header {
-      background: #2c3e50;
-      color: #fff;
-      text-align: center;
-      padding: 60px 20px;
-    }
-    .header h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    .header p {
-      font-size: 18px;
-      opacity: 0.8;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .title-line {
-      font-size: 24px;
-      margin: 50px 0 20px;
-      border-left: 5px solid #3498db;
-      padding-left: 15px;
-    }
-    .project-card {
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      margin-bottom: 25px;
-    }
-    .project-card h3 {
-      color: #2c3e50;
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
-    .project-card p {
-      color: #666;
-      margin-bottom: 12px;
-    }
-    .project-card a {
-      display: inline-block;
-      background: #3498db;
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      margin-right: 10px;
-    }
-    .project-card a:hover {
-      background: #2980b9;
-    }
-    .footer {
-      text-align: center;
-      padding: 40px;
-      color: #888;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>尚筑咨询 - 专注于建筑与设计行业人才解决方案</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="header">
-    <h1>姓名</h1>
-    <p>开发工程师 | 个人作品集</p>
-  </div>
-
+<!-- 导航 -->
+<nav class="navbar">
   <div class="container">
-    <h2 class="title-line">关于我</h2>
-    <div class="project-card">
-      <p>熟练常用前后端技术，热爱编程，持续学习，有多个实战项目经验。</p>
-      <p>技能：HTML/CSS/JS、网页开发、脚本工具、项目搭建等</p>
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo">
     </div>
-
-    <h2 class="title-line">项目作品</h2>
-
-    <div class="project-card">
-      <h3>项目一：个人静态主页</h3>
-      <p>技术：HTML + CSS 原生开发，响应式布局，适配手机和电脑</p>
-      <p>简介：简洁个人展示主页，可作为简历门户使用</p>
-      <a href="https://github.com/你的用户名/仓库名">查看源码</a>
-    </div>
-
-    <div class="project-card">
-      <h3>项目二：小工具脚本</h3>
-      <p>技术：Python / JS 脚本</p>
-      <p>简介：日常自用效率小工具，简化重复操作</p>
-      <a href="https://github.com/你的用户名/仓库名">查看源码</a>
-    </div>
-
+    <ul class="nav">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#about">关于我们</a></li>
+      <li><a href="#service">服务项目</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ul>
   </div>
+</nav>
 
-  <div class="footer">
-    © 2025 个人作品集 | GitHub Pages 托管
+<!-- 首屏 Banner -->
+<section class="banner" id="home">
+  <div class="container">
+    <div class="banner-text">
+      <h1>专注建筑与设计行业<br>高端人才寻访服务</h1>
+      <p>为优秀企业匹配顶尖人才，为职场精英提供理想平台</p>
+      <a href="#contact" class="btn">立即咨询</a>
+    </div>
   </div>
+</section>
+
+<!-- 关于我们 -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="title">
+      <h2>关于我们</h2>
+    </div>
+    <div class="about-content">
+      <div class="about-left">
+        <img src="images/about.jpg" alt="关于我们">
+      </div>
+      <div class="about-right">
+        <p>尚筑咨询是一家专注于建筑、设计、地产、工程领域的专业猎头机构。我们以精准、高效、诚信为理念，为企业提供高端人才寻访、团队搭建、人才咨询等一站式服务。</p>
+        <p>我们深耕行业多年，拥有丰富的人才资源库与专业的顾问团队，致力于成为企业最值得信赖的人才合作伙伴。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 服务项目 -->
+<section class="service" id="service">
+  <div class="container">
+    <div class="title">
+      <h2>服务项目</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-item">
+        <h3>高端人才猎头</h3>
+        <p>针对总监、经理、技术专家、主创设计师等关键岗位</p>
+      </div>
+      <div class="service-item">
+        <h3>团队整体搭建</h3>
+        <p>为新公司、新部门快速搭建完整设计/工程/管理团队</p>
+      </div>
+      <div class="service-item">
+        <h3>行业人才咨询</h3>
+        <p>提供薪酬调研、组织架构规划、人力配置优化等专业咨询</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 联系我们 -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="title">
+      <h2>联系我们</h2>
+    </div>
+    <div class="contact-info">
+      <p>📞 联系电话：138 0000 0000</p>
+      <p>📧 邮箱：hr@suntzurecruit.com</p>
+      <p>📍 地址：上海市浦东新区XX商务中心</p>
+    </div>
+  </div>
+</section>
+
+<!-- 底部 -->
+<footer>
+  <div class="container">
+    <p>© 2025 尚筑咨询 版权所有</p>
+  </div>
+</footer>
 
 </body>
 </html>
