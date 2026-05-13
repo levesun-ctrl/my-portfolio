@@ -1,100 +1,964 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>尚筑咨询 - 专注于建筑与设计行业人才解决方案</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVision - 技术创新解决方案</title>
+    <meta name="description" content="TechVision 是一家领先的技术公司，专注于AI、云计算和数据解决方案。我们为全球企业提供创新的技术服务。">
+    <meta name="keywords" content="技术公司, AI解决方案, 云计算, 数据分析">
+    <meta property="og:title" content="TechVision - 技术创新解决方案">
+    <meta property="og:description" content="TechVision 是一家领先的技术公司，专注于AI、云计算和数据解决方案。">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a0e27;
+            --primary-light: #1a1f3a;
+            --accent-blue: #00d4ff;
+            --accent-purple: #7c3aed;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b8d4;
+            --border-color: #2d3448;
+            --bg-hover: #252d47;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #0f1432 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-contact {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--accent-blue);
+            margin: 5px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero .container {
+            max-width: 1000px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff, var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-blue);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--accent-blue);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--primary-light);
+        }
+
+        .features .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--primary-dark);
+        }
+
+        .services .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-item {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(124, 58, 237, 0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            border-color: var(--accent-blue);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+        }
+
+        .service-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .service-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-item p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(124, 58, 237, 0.05));
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--primary-light);
+        }
+
+        .testimonials .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--accent-blue);
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .cta .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: rgba(10, 14, 39, 0.98);
+                padding: 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Smooth transitions */
+        a, button {
+            transition: all 0.3s ease;
+        }
+
+        /* Loading animation */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+            <a href="#" class="logo">TechVision</a>
+            <ul id="navMenu">
+                <li><a href="#features">功能特性</a></li>
+                <li><a href="#services">我们的服务</a></li>
+                <li><a href="#testimonials">客户评价</a></li>
+                <li><a href="#contact" class="btn-contact">联系我们</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-<!-- 导航 -->
-<nav class="navbar">
-  <div class="container">
-    <div class="logo">
-      <img src="images/logo.png" alt="Logo">
-    </div>
-    <ul class="nav">
-      <li><a href="#home">首页</a></li>
-      <li><a href="#about">关于我们</a></li>
-      <li><a href="#service">服务项目</a></li>
-      <li><a href="#contact">联系我们</a></li>
-    </ul>
-  </div>
-</nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>驱动未来的技术力量</h1>
+            <p class="hero-subtitle">TechVision 为全球企业提供领先的AI、云计算和数据解决方案，助力数字化转型。</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView()">立即咨询</button>
+                <button class="btn-secondary">了解更多</button>
+            </div>
+            <div class="scroll-indicator">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+        </div>
+    </section>
 
-<!-- 首屏 Banner -->
-<section class="banner" id="home">
-  <div class="container">
-    <div class="banner-text">
-      <h1>专注建筑与设计行业<br>高端人才寻访服务</h1>
-      <p>为优秀企业匹配顶尖人才，为职场精英提供理想平台</p>
-      <a href="#contact" class="btn">立即咨询</a>
-    </div>
-  </div>
-</section>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">核心优势</h2>
+            <p class="section-subtitle">我们拥有业界领先的技术团队和丰富的项目经验</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>快速部署</h3>
+                    <p>我们的解决方案可以快速集成到您的现有系统中，平均部署时间仅需2周。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>安全可靠</h3>
+                    <p>企业级安全认证，99.99%运行时间保证，数据加密传输，24/7全天候监控。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>数据洞察</h3>
+                    <p>基于AI的数据分析引擎，实时挖掘业务洞察，支持决策优化。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>创新技术</h3>
+                    <p>采用最新的机器学习、深度学习和自然语言处理技术。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>专业团队</h3>
+                    <p>由资深技术专家和行业顾问组成，平均经验10年以上。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>全球覆盖</h3>
+                    <p>在5个大洲部署基础设施，为全球客户提供本地化服务。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- 关于我们 -->
-<section class="about" id="about">
-  <div class="container">
-    <div class="title">
-      <h2>关于我们</h2>
-    </div>
-    <div class="about-content">
-      <div class="about-left">
-        <img src="images/about.jpg" alt="关于我们">
-      </div>
-      <div class="about-right">
-        <p>尚筑咨询是一家专注于建筑、设计、地产、工程领域的专业猎头机构。我们以精准、高效、诚信为理念，为企业提供高端人才寻访、团队搭建、人才咨询等一站式服务。</p>
-        <p>我们深耕行业多年，拥有丰富的人才资源库与专业的顾问团队，致力于成为企业最值得信赖的人才合作伙伴。</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">我们的服务</h2>
+            <p class="section-subtitle">为不同行业提供定制化解决方案</p>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-number">01</div>
+                    <h3>AI解决方案</h3>
+                    <p>提供端到端的人工智能应用开发，包括机器学习模型训练、部署和优化。</p>
+                    <a href="#" class="service-link">了解更多 →</a>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">02</div>
+                    <h3>云计算服务</h3>
+                    <p>完整的云基础设施管理，包括迁移、优化和成本控制。</p>
+                    <a href="#" class="service-link">了解更多 →</a>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">03</div>
+                    <h3>数据分析</h3>
+                    <p>深层数据洞察和可视化分析，驱动业务决策。</p>
+                    <a href="#" class="service-link">了解更多 →</a>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">04</div>
+                    <h3>技术咨询</h3>
+                    <p>战略性技术规划，帮助企业制定数字转型路线图。</p>
+                    <a href="#" class="service-link">了解更多 →</a>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">05</div>
+                    <h3>系统集成</h3>
+                    <p>复杂系统集成和API开发，确保无缝协作。</p>
+                    <a href="#" class="service-link">了解更多 →</a>
+                </div>
+                <div class="service-item">
+                    <div class="service-number">06</div>
+                    <h3>技术培训</h3>
+                    <p>为您的团队提供专业技术培训和技能提升。</p>
+                    <a href="#" class="service-link">了解更多 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- 服务项目 -->
-<section class="service" id="service">
-  <div class="container">
-    <div class="title">
-      <h2>服务项目</h2>
-    </div>
-    <div class="service-grid">
-      <div class="service-item">
-        <h3>高端人才猎头</h3>
-        <p>针对总监、经理、技术专家、主创设计师等关键岗位</p>
-      </div>
-      <div class="service-item">
-        <h3>团队整体搭建</h3>
-        <p>为新公司、新部门快速搭建完整设计/工程/管理团队</p>
-      </div>
-      <div class="service-item">
-        <h3>行业人才咨询</h3>
-        <p>提供薪酬调研、组织架构规划、人力配置优化等专业咨询</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">已服务客户</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">2000+</div>
+                    <div class="stat-label">项目交付</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">技术专家</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">满意度评分</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- 联系我们 -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="title">
-      <h2>联系我们</h2>
-    </div>
-    <div class="contact-info">
-      <p>📞 联系电话：138 0000 0000</p>
-      <p>📧 邮箱：hr@suntzurecruit.com</p>
-      <p>📍 地址：上海市浦东新区XX商务中心</p>
-    </div>
-  </div>
-</section>
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">客户评价</h2>
+            <p class="section-subtitle">来自业界领先企业的真实反馈</p>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"TechVision 的AI解决方案帮助我们提升了60%的数据处理效率。他们的团队专业且响应迅速。"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">李</div>
+                        <div class="author-info">
+                            <h4>李明</h4>
+                            <p>科技公司 CTO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"与TechVision的合作改变了我们的云基础设施。成本降低40%，性能提升显著。"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">王</div>
+                        <div class="author-info">
+                            <h4>王女士</h4>
+                            <p>电商平台 技术负责人</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"专业的技术团队、完善的服务体系、出色的交付能力。TechVision是值得信赖的技术合作伙伴。"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">张</div>
+                        <div class="author-info">
+                            <h4>张总</h4>
+                            <p>金融科技公司 董事长</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- 底部 -->
-<footer>
-  <div class="container">
-    <p>© 2025 尚筑咨询 版权所有</p>
-  </div>
-</footer>
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>准备好开始您的数字化之旅了吗？</h2>
+            <p>联系我们的团队，了解我们如何帮助您的企业实现技术升级和业务增长。</p>
+            <button class="btn-primary">立即联系我们</button>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TechVision</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">驱动未来的技术力量，为企业数字化转型提供完整解决方案。</p>
+            </div>
+            <div class="footer-section">
+                <h3>产品</h3>
+                <ul>
+                    <li><a href="#">AI解决方案</a></li>
+                    <li><a href="#">云计算平台</a></li>
+                    <li><a href="#">数据分析</a></li>
+                    <li><a href="#">系统集成</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>公司</h3>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">新闻资讯</a></li>
+                    <li><a href="#">招聘信息</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <ul>
+                    <li><a href="tel:+8610-1234-5678">电话: +86 10-1234-5678</a></li>
+                    <li><a href="mailto:info@techvision.com">邮箱: info@techvision.com</a></li>
+                    <li>地址: 北京市朝阳区XX街道</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechVision. 保留所有权利。</p>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll with offset for fixed navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .service-item, .testimonial, .stat').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>

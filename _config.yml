@@ -1,0 +1,42 @@
+# Jekyll 配置文件
+# 用于 GitHub Pages
+
+# 网站设置
+title: TechVision - 技术创新解决方案
+description: TechVision 是一家领先的技术公司，专注于AI、云计算和数据解决方案。
+url: https://username.github.io
+baseurl: /
+
+# 社交媒体
+author:
+  name: TechVision
+  email: info@techvision.com
+
+# SEO 配置
+lang: zh-CN
+locale: zh_CN
+
+# Theme
+theme: jekyll-theme-minimal
+
+# Markdown 引擎
+markdown: kramdown
+
+# 插件
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+
+# 构建设置
+exclude:
+  - .gitignore
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+# 输出设置
+permalink: /:year/:month/:day/:title.html
+
+# 分页
+paginate: 10
+paginate_path: /blog/:num/

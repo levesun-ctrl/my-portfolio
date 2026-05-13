@@ -1,0 +1,444 @@
+/* 
+  自定义样式扩展
+  将此文件的样式规则复制到 index.html 的 <style> 标签中
+  或在 <head> 中引入此文件作为外部样式表
+*/
+
+/* 
+  暗色主题变体 - 更深的背景
+  用以下代码替换原有的 :root 变量
+*/
+:root-dark-theme {
+    --primary-dark: #000000;
+    --primary-light: #0f1117;
+    --accent-blue: #58a6ff;
+    --accent-purple: #9e6dc0;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+}
+
+/*
+  亮色主题变体
+  用以下代码替换原有的 :root 变量
+*/
+:root-light-theme {
+    --primary-dark: #ffffff;
+    --primary-light: #f6f8fa;
+    --accent-blue: #0969da;
+    --accent-purple: #8250df;
+    --text-primary: #24292f;
+    --text-secondary: #57606a;
+    --border-color: #d8dee4;
+    --bg-hover: #eaeef2;
+}
+
+/* 
+  自然主题 - 绿色和棕色
+  用以下代码替换原有的 :root 变量
+*/
+:root-nature-theme {
+    --primary-dark: #0d2818;
+    --primary-light: #1a3a2a;
+    --accent-blue: #22c55e;
+    --accent-purple: #84cc16;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+}
+
+/*
+  企业蓝色主题
+  用以下代码替换原有的 :root 变量
+*/
+:root-corporate-theme {
+    --primary-dark: #001f3f;
+    --primary-light: #003366;
+    --accent-blue: #0066cc;
+    --accent-purple: #3366ff;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+}
+
+/* 
+  渐进式增强 - 动画优化
+  为低端设备禁用动画
+*/
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*
+  印刷样式 - 用于打印优化
+*/
+@media print {
+    nav,
+    .scroll-indicator,
+    .btn-primary,
+    .btn-secondary,
+    .btn-contact {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    .feature-card,
+    .service-item,
+    .testimonial {
+        page-break-inside: avoid;
+    }
+}
+
+/*
+  高对比度模式 - 无障碍访问
+*/
+@media (prefers-contrast: more) {
+    body {
+        --text-primary: #ffffff;
+        --text-secondary: #ffffff;
+        --accent-blue: #00ffff;
+        --accent-purple: #ff00ff;
+    }
+
+    .feature-card,
+    .service-item,
+    .testimonial {
+        border-width: 2px;
+    }
+}
+
+/*
+  暗色模式 - 系统偏好
+*/
+@media (prefers-color-scheme: dark) {
+    /* 已默认设置为暗色 */
+}
+
+@media (prefers-color-scheme: light) {
+    /* 可选：为浅色模式添加覆盖 */
+    body {
+        --primary-dark: #ffffff;
+        --primary-light: #f5f5f5;
+    }
+}
+
+/*
+  超大屏幕优化 (2560px+)
+*/
+@media (min-width: 2560px) {
+    h1 {
+        font-size: 5rem;
+    }
+
+    .section-title {
+        font-size: 4rem;
+    }
+
+    nav a {
+        font-size: 1.2rem;
+    }
+}
+
+/*
+  平板设备优化 (768px - 1024px)
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .features-grid,
+    .services-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*
+  小屏幕手机优化 (320px - 480px)
+*/
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    nav ul {
+        gap: 0.5rem;
+    }
+
+    .hero-buttons {
+        gap: 0.75rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .feature-card,
+    .service-item,
+    .testimonial {
+        padding: 1.5rem;
+    }
+
+    .features-grid,
+    .services-grid,
+    .testimonials-grid {
+        gap: 1.5rem;
+    }
+}
+
+/*
+  自定义滚动条（Webkit浏览器）
+*/
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-purple);
+}
+
+/*
+  自定义选中文本样式
+*/
+::selection {
+    background: var(--accent-blue);
+    color: var(--primary-dark);
+}
+
+::-moz-selection {
+    background: var(--accent-blue);
+    color: var(--primary-dark);
+}
+
+/*
+  自定义焦点状态（无障碍访问）
+*/
+a:focus,
+button:focus {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+/*
+  悬停效果增强
+*/
+@media (hover: hover) {
+    .feature-card,
+    .service-item,
+    .testimonial {
+        cursor: pointer;
+    }
+}
+
+/*
+  触摸设备优化
+*/
+@media (hover: none) {
+    .feature-card,
+    .service-item,
+    .testimonial {
+        /* 减少悬停效果在触摸设备上 */
+        transform: none;
+    }
+
+    .btn-primary:active,
+    .btn-secondary:active {
+        transform: scale(0.95);
+    }
+}
+
+/*
+  自定义加载动画
+*/
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/*
+  自定义渐变背景
+*/
+.gradient-bg-1 {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+}
+
+.gradient-bg-2 {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/*
+  阴影效果预设
+*/
+.shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/*
+  圆角预设
+*/
+.rounded-sm {
+    border-radius: 4px;
+}
+
+.rounded-md {
+    border-radius: 8px;
+}
+
+.rounded-lg {
+    border-radius: 16px;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+/*
+  间距工具类
+*/
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+
+.m-1 { margin: 0.25rem; }
+.m-2 { margin: 0.5rem; }
+.m-4 { margin: 1rem; }
+.m-6 { margin: 1.5rem; }
+.m-8 { margin: 2rem; }
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-8 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-8 { margin-bottom: 2rem; }
+
+/*
+  文本工具类
+*/
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+
+/*
+  显示工具类
+*/
+.hidden { display: none; }
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.grid { display: grid; }
+
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+.opacity-100 { opacity: 1; }
+
+/*
+  边框工具类
+*/
+.border { border: 1px solid var(--border-color); }
+.border-top { border-top: 1px solid var(--border-color); }
+.border-bottom { border-bottom: 1px solid var(--border-color); }
+
+.border-blue { border-color: var(--accent-blue); }
+.border-purple { border-color: var(--accent-purple); }
+
+/*
+  背景工具类
+*/
+.bg-primary { background: var(--primary-dark); }
+.bg-primary-light { background: var(--primary-light); }
+.bg-transparent { background: transparent; }
+
+.bg-gradient-to-r {
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+}
+
+.bg-gradient-to-b {
+    background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+}
